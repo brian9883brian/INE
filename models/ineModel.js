@@ -24,6 +24,11 @@ const ineModel = {
     return rows[0];
   },
 
+  async getByClaveIne(clave_ine) {
+    const [rows] = await pool.query('SELECT * FROM ine WHERE clave_ine = ?', [clave_ine]);
+    return rows[0];
+  },
+
   async deleteByCurp(curp) {
     const [result] = await pool.query('DELETE FROM ine WHERE curp = ?', [curp]);
     return result.affectedRows;
