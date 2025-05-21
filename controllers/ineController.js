@@ -49,6 +49,19 @@ const ineController = {
     }
   },
 
+  async getByClaveIne(req, res) {
+    try {
+      const { clave_ine } = req.params;
+      const registro = await ineModel.getByClaveIne(clave_ine);
+      if (!registro) {
+        return res.status(404).json({ message: 'No se encontró registro con esa clave INE' });
+      }
+      res.json(registro);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
+
   async deleteByCurp(req, res) {
     try {
       const { curp } = req.params;
