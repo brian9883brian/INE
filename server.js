@@ -4,14 +4,14 @@ const cors = require('cors');
 const ineRoutes = require('./routes/ineRoutes');
 
 const app = express();
-const PORT = process.env.SERVER_PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// Rutas del microservicio INE
-app.use('/', ineRoutes); // Ruta base directa
+// Rutas
+app.use('/', ineRoutes);
 
 // Health Check
 app.get('/health', (req, res) => {
